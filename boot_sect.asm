@@ -1,5 +1,5 @@
 ; BIOS automatically places boot sector binary at 0x7c00
-; org makes sure that memory addresses are automatically offset appropriately
+; org makes sure that label addresses are automatically offset appropriately
 [org 0x7c00]
 
 ; set stack pointers far away from boot sector address
@@ -25,8 +25,8 @@ jmp $
 %include "print_nl.asm"
 
 ; defines 510 zero-bytes minus the size of previous code
-; $ is a constant for address at start of current line
-; $$ is a constant for address at start of previous line
+; $ represents the address at start of current line
+; $$ represents the address at start of section
 times 510 - ($-$$) db 0
 
 ; special value that tells BIOS this is the boot sector

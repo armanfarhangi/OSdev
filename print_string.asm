@@ -11,7 +11,7 @@ loop:
     ; compares al to 0
     ; comparison results are saved and used for conditions
     cmp al, 0
-    ; jump to end if 0 is found
+    ; jump to end if equal to 0
     je end
 
     ; otherwise, print the character
