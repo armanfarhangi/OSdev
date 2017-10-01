@@ -21,8 +21,8 @@ jmp $
 
 ; file inclusions
 %include "constants.asm"
-%include "print_string.asm"
-%include "print_nl.asm"
+%include "functions/print/print_string.asm"
+%include "functions/print/print_nl.asm"
 
 ; defines 510 zero-bytes minus the size of previous code
 ; $ represents the address at start of current line
