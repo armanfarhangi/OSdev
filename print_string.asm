@@ -6,7 +6,7 @@ print_string:
     ; sets to tty mode, which is necessary to write to screen
     mov ah, 0x0e
 
-loop:
+iterate:
     mov al, [bx]
     ; compares al to 0
     ; comparison results are saved and used for conditions
@@ -20,7 +20,7 @@ loop:
     ; increment to next character-byte
     add bx, 1
     ; reiterate
-    jmp loop
+    jmp iterate
 
 end:
     ; pops register values back into registers
