@@ -8,21 +8,25 @@
 mov bp, 0x8000
 mov sp, bp
 
-mov dx, GREETING1
+mov bx, GREETING1
 call print_string
 
 call print_nl
 
-mov dx, GREETING2
+mov bx, GREETING2
 call print_string
+
+call print_nl
 
 ; es:bx is where disk data will be loaded into memory
 ; es:bx is es address * 16 + bx address
-mov bx, 0x9000
+mov bx, [LOAD_ADDRESS]
 ; amount of sectors we want to read
 ; will later be compared to how many actually read
 mov dh, 2
 call read_disk
+
+call print_string
 
 ; infinite loop
 jmp $
@@ -43,4 +47,4 @@ times 510 - ($-$$) db 0
 dw 0xaa55
 
 ; second sector (b/c data immediately follows 512th byte)
-db 'This sentence didn't make it in the first 512 bytes (boot sector); it was loaded after', 0
+db 'This sentence did not make it in the first 512 bytes (boot sector). It was loaded by the boot sector', 0
