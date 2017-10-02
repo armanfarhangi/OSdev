@@ -10,12 +10,10 @@ mov sp, bp
 
 mov bx, GREETING1
 call print_string
-
 call print_nl
 
 mov bx, GREETING2
 call print_string
-
 call print_nl
 
 ; es:bx is where disk data will be loaded into memory
@@ -27,6 +25,7 @@ mov dh, 2
 call read_disk
 
 call print_string
+call print_nl
 
 ; infinite loop
 jmp $
@@ -47,4 +46,4 @@ times 510 - ($-$$) db 0
 dw 0xaa55
 
 ; second sector (b/c data immediately follows 512th byte)
-db 'This sentence did not make it in the first 512 bytes (boot sector). It was loaded by the boot sector', 0
+db 'This sentence was loaded by the boot sector via interrupt!', 0
