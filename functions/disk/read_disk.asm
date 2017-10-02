@@ -24,6 +24,32 @@ read_disk:
 
     ; interrupt for reading disk
     int 0x13
+    ; if there's carry bit, there's an error
+    jc disk_error
+
+    ; get number of sectors back from stack
+    ; compare to actual amount read
+    pop dx
+    cmp al, dh
+    jne sector_error
 
     popa
     ret
+
+disk_error:
+    mov bx, DISK_ERROR_MESSAGE
+    call print_string
+    call print_nl
+    jmp $
+
+sector_error:
+    mov bx, SECTOR_ERROR_MESSAGE
+    call print_string
+    call print_nl
+    jmp $
+
+DISK_ERROR_MESSAGE:
+    db 'Error reading disk', 0
+
+SECTOR_ERROR_MESSAGE:
+    db 'Incorrect number of sectors read', 0
