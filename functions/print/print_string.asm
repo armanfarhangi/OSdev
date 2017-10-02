@@ -1,4 +1,4 @@
-; prints characters from address in bx until there's a 0
+; prints characters from address in dx until there's a 0
 
 print_string:
     ; pushes all register values onto stack
@@ -7,7 +7,7 @@ print_string:
     mov ah, 0x0e
 
 iterate:
-    mov al, [bx]
+    mov al, [dx]
     ; compares al to 0
     ; comparison results are saved and used for conditions
     cmp al, 0
@@ -18,7 +18,7 @@ iterate:
     int 0x10
 
     ; increment to next character-byte
-    add bx, 1
+    add dx, 1
     ; reiterate
     jmp iterate
 
