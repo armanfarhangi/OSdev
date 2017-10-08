@@ -28,8 +28,7 @@ call print_string
 call print_nl
 call print_nl
 
-; infinite loop
-jmp $
+call switch_pm ; calls init_pm which calls CODE_SEG:start_pm
 
 ; file inclusions
 %include "16bit/constants/strings.asm"
@@ -37,6 +36,16 @@ jmp $
 %include "16bit/functions/print_string.asm"
 %include "16bit/functions/print_nl.asm"
 %include "16bit/functions/read_disk.asm"
+%include "16bit/functions/switch_pm.asm"
+%include "32bit/constants/gdt.asm"
+%include "32bit/functions/init_pm.asm"
+
+; 32bit protected mode
+[bits 32]
+start_pm:
+
+; infinite loop
+jmp $
 
 ; defines 510 zero-bytes minus the size of previous code
 ; $ represents the address at start of current line
@@ -47,4 +56,4 @@ times 510 - ($-$$) db 0
 dw 0xaa55
 
 ; second sector (b/c data immediately follows 512th byte)
-db 'This sentence was loaded by the boot sector via disk read ISR!', 0
+db 'This sentence was loaded by the boot sector via BIOS ISR!', 0
