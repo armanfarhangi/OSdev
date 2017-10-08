@@ -26,6 +26,7 @@ call read_disk
 
 call print_string
 call print_nl
+call print_nl
 
 ; infinite loop
 jmp $
@@ -46,4 +47,4 @@ times 510 - ($-$$) db 0
 dw 0xaa55
 
 ; second sector (b/c data immediately follows 512th byte)
-db 'This sentence was loaded by the boot sector via interrupt service routine!', 0
+db 'This sentence was loaded by the boot sector via disk read ISR!', 0
