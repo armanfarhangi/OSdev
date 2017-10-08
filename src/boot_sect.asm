@@ -31,11 +31,11 @@ call print_nl
 jmp $
 
 ; file inclusions
-%include "constants/strings.asm"
-%include "constants/numbers.asm"
-%include "functions/print/print_string.asm"
-%include "functions/print/print_nl.asm"
-%include "functions/disk/read_disk.asm"
+%include "16bit/constants/strings.asm"
+%include "16bit/constants/numbers.asm"
+%include "16bit/functions/print/print_string.asm"
+%include "16bit/functions/print/print_nl.asm"
+%include "16bit/functions/disk/read_disk.asm"
 
 ; defines 510 zero-bytes minus the size of previous code
 ; $ represents the address at start of current line
