@@ -3,8 +3,8 @@
 read_disk:
     pusha
 
-    ; need to overwrite dh for disk read interrupt
-    ; push to stack to use later for error checking
+    ; need to overwrite dh for disk read interrupt...
+    ; ... so push to stack to use later for error checking
     push dx
 
     ; disk read operation value
@@ -24,7 +24,8 @@ read_disk:
 
     ; interrupt for reading disk
     int 0x13
-    ; if there's carry bit, there's an error
+
+    ; if there's a carry bit, there's an error
     jc disk_error
 
     ; get number of sectors back from stack

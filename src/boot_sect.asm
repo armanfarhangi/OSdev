@@ -16,8 +16,8 @@ mov bx, GREETING2
 call print_string
 call print_nl
 
-; es:bx is where disk data will be loaded into memory
-; es:bx is es address * 16 + bx address
+; ds:bx is where disk data will be loaded into memory
+; ds:bx is ds address * 16 + bx address
 mov bx, [LOAD_ADDRESS]
 ; amount of sectors we want to read
 ; will later be compared to how many actually read
@@ -46,4 +46,4 @@ times 510 - ($-$$) db 0
 dw 0xaa55
 
 ; second sector (b/c data immediately follows 512th byte)
-db 'This sentence was loaded by the boot sector via interrupt!', 0
+db 'This sentence was loaded by the boot sector via interrupt service routine!', 0
