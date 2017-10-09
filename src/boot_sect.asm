@@ -15,6 +15,7 @@ call print_nl
 mov bx, GREETING2
 call print_string
 call print_nl
+call print_nl
 
 ; ds:bx is where disk data will be loaded into memory
 ; ds:bx is ds address * 16 + bx address
