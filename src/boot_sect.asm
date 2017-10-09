@@ -30,7 +30,6 @@ call print_nl
 
 call switch_pm ; calls init_pm which calls CODE_SEG:start_pm
 
-; file inclusions
 %include "16bit/constants/strings.asm"
 %include "16bit/constants/numbers.asm"
 %include "16bit/functions/print_string.asm"
@@ -39,19 +38,18 @@ call switch_pm ; calls init_pm which calls CODE_SEG:start_pm
 %include "16bit/functions/switch_pm.asm"
 %include "32bit/constants/gdt.asm"
 %include "32bit/functions/init_pm.asm"
+%include "32bit/constants/strings.asm"
+%include "32bit/functions/print_string_pm.asm"
 
 ; 32bit protected mode
 [bits 32]
 start_pm:
 
-mov ebx, GREETING3
-call print_string_pm
+    mov ebx, GREETING3
+    call print_string_pm
 
-%include "32bit/constants/strings.asm"
-%include "32bit/functions/print_string_pm.asm"
-
-; infinite loop
-jmp $
+    ; infinite loop
+    jmp $
 
 ; defines 510 zero-bytes minus the size of previous code
 ; $ represents the address at start of current line

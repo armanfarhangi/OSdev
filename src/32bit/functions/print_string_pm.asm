@@ -12,8 +12,8 @@ VIDEO_MEMORY equ 0xb8000
 WHITE_ON_BLACK equ 0x0f
 
 print_string_pm:
-pusha
-mov edx, VIDEO_MEMORY
+    pusha
+    mov edx, VIDEO_MEMORY
 
 print_string_pm_loop:
     mov al, [ebx]
