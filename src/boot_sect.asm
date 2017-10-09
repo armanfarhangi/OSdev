@@ -44,6 +44,12 @@ call switch_pm ; calls init_pm which calls CODE_SEG:start_pm
 [bits 32]
 start_pm:
 
+mov ebx, GREETING3
+call print_string_pm
+
+%include "32bit/constants/strings.asm"
+%include "32bit/functions/print_string_pm.asm"
+
 ; infinite loop
 jmp $
 
