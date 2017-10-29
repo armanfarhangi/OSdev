@@ -44,7 +44,7 @@ call switch_pm ; calls init_pm which calls CODE_SEG:start_pm
 [bits 32]
 start_pm:
 
-    mov ebx, GREETING3
+    mov ebx, PROT_MODE_MSG
     call print_string_pm
 
     ; infinite loop
