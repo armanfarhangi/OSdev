@@ -1,2 +1,2 @@
-GREETING3:
-    db 'I was printed in 32bit mode; directly to the VGA!', 0
+PROT_MODE_MSG:
+    db 'Transitioned into protected 32 bit mode.   ', 0
