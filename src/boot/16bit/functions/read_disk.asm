@@ -13,9 +13,6 @@ read_disk:
     ; number of sectors
     mov al, dh
 
-    ; number of sector to begin at (sectors are not 0-based)
-    mov cl, 0x02
-
     ; track/cylinder number
     mov ch, 0x00
 

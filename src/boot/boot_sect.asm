@@ -23,6 +23,8 @@ call print_nl
 ; ds:bx is where disk data will be loaded into memory
 ; ds:bx is ds address * 16 + bx address
 mov bx, KERNEL_LOAD_ADDRESS
+; number of sector to begin at (sectors are not 0-based)
+mov cl, 0x02
 ; amount of sectors we want to read
 ; will later be compared to how many actually read
 mov dh, 2
@@ -47,8 +49,8 @@ start_pm:
     mov ebx, PROT_MODE_MSG
     call print_string_pm
 
-    ; infinite loop
-    jmp $
+    ; go to kernel binary (loaded from disk earlier)
+    call KERNEL_LOAD_ADDRESS
 
 ; defines 510 zero-bytes minus the size of previous code
 ; $ represents the address at start of current line
