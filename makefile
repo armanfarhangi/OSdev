@@ -12,7 +12,7 @@ os-image.bin: boot_sect.bin kernel.bin
 
 # create boot sector binary
 boot_sect.bin:
-	nasm -i src/ -f bin src/boot/boot_sect.asm -o boot_sect.bin
+	nasm -i src/boot/ -f bin src/boot/boot_sect.asm -o boot_sect.bin
 
 # create kernel binary by linking its object files
 kernel.bin: kernel_objects
