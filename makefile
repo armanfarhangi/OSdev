@@ -4,7 +4,7 @@
 
 # first rule is run by default
 run: os-image.bin
-	qemu-system-x86_64 os-image.bin
+	qemu-system-x86_64 -fda os-image.bin
 
 # join boot sector and kernel binary
 os-image.bin: boot_sect.bin kernel.bin
